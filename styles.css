@@ -44,7 +44,7 @@ nav ul {
 main {
     padding-top: 17em;
     padding-bottom: 17em;
-    background-image: url('./client/public/images/Background.jpg');
+    background-image: url('/client/public/images/Background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
