@@ -1,9 +1,33 @@
 
-.footer {
+.fav {
     font-size: 27px;
     display: flex;
-    gap: 3em;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.7em;
+    border-right: 2px solid #ada5a5;
+
+
+}
+
+.fav p:last-of-type {
+    margin-top: 1em
+}
+
+.icons {
+    display: flex;
     margin-left: 2em;
-    margin-top: 1.5em;
+}
+.icons img {
+    display: block;
+    width: 60%;
+    height: auto;
+    margin-top: 2.5em;
+}
+.container {
+    display: flex;
+    gap: 5em;
+    margin-top: 2em;
+    margin-left: 2em;
     margin-bottom: 1em;
 }
