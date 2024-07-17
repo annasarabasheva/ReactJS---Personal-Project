@@ -11,27 +11,27 @@ export default function About() {
             <div className={styles.artworkContainer}>
                 <div className={styles.artworkCard}>
                     <img src="/images/GirlDrawing.jpeg" alt="Little Yellow Dress" className={styles.artworkImage} />
-                    <h3>Title: Little yellow dress</h3>
-                    <h4>Created By: annaThebanana</h4>
-                    <p>A beautiful depiction of a sunset over the ocean.</p>
+                    <h2>Little yellow dress</h2>
+                    <h3>Created By: annaThebanana</h3>
+                    <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
                     <img src="/images/Space.jpeg" alt="Colorful Dreams" className={styles.artworkImage} />
-                    <h3>Title: Colorful Dreams</h3>
-                    <h4>Created By: artistJane</h4>
-                    <p>An abstract representation of dreams in vivid colors.</p>
+                    <h2>Colorful Dreams</h2>
+                    <h3>Created By: artistJane</h3>
+                    <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
                     <img src="/images/FlowerGirl.jpeg" alt="Whimsical Forest" className={styles.artworkImage} />
-                    <h3>Title: Whimsical Forest</h3>
-                    <h4>Created By: natureLover</h4>
-                    <p>A charming portrayal of a mystical forest.</p>
+                    <h2>Whimsical Forest</h2>
+                    <h3>Created By: natureLover</h3>
+                    <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
-                    <img src="/images/Eyes.jpeg" alt="Ocean Serenity" className={styles.artworkImage} />
-                    <h3>Title: Ocean Serenity</h3>
-                    <h4>Created By: seaArtist</h4>
-                    <p>Tranquil scenes of the ocean's beauty.</p>
+                    <img src="/images/HristiyanEye.jpeg" alt="Ocean Serenity" className={styles.artworkImage} />
+                    <h2>Ocean Serenity</h2>
+                    <h3>Created By: seaArtist</h3>
+                    <button className={styles.detailsButton}>Details</button>
                 </div>
             </div>
         </div>

@@ -1,38 +1,61 @@
 .aboutContainer {
-    background-color: antiquewhite;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 39%, #9599E2 73%);
     padding: 5em;
     
 }
+
 .aboutContainer p {
-    font-size: 27px;
+    font-size: 35px;
     line-height: 2;
 }
 .aboutContainer p:last-of-type {
     margin-top: 2em;
-    margin-bottom: 4em;
+    margin-bottom: 2.5em;
     
 }
 .aboutContainer h1 {
-    font-size: 50px;
+    font-size: 60px;
+    font-weight: 400;
     margin-bottom: 1.5em;
+    font-family: "Playwrite CU", cursive;
 }
+
 .artworkContainer {
     display: flex;
-    gap: 3em;
+    gap: 5em;
     justify-content: center;
 
 }
 
 .artworkCard {
-    background: #c7a84a;
-    border: 1px solid #dc4d19;
-    border-radius: 8px;
-    padding: 5em;
+    background: white;
+   
+    border-radius: 44px;
+    padding: 2em;
+    text-align: center;
     
+}
+.artworkCard h2{
+    margin-bottom: 1em;
+    font-family: "Playwrite CU", cursive;
+
 }
 
 .artworkImage {
     width: 100%;
     height: auto;
+    margin-bottom: 4em;
+    border-radius: 20px;
     
 }
+.detailsButton {
+    margin-top: 2em;
+    font-size: 35px;
+    padding: 0.7em;
+    font-family: "Playwrite CU", cursive;
+    border-radius: 24px;
+    background-color: #ffc1c8
+
+}
+
