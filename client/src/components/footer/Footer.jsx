@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCopyright, faEarthEurope, faPalette, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCopyright, faEarthEurope, faPalette, faHeart } from '@fortawesome/free-solid-svg-icons';
+import styles from './Footer.module.css';
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className={styles.footer}>
             <p><FontAwesomeIcon icon={faCopyright} /> 2024 - All rights reserved</p>
             <p><FontAwesomeIcon icon={faEarthEurope} /> Artists from all over the world</p>
             <p><FontAwesomeIcon icon={faPalette} /> Your artwork is secure and cherished here</p>

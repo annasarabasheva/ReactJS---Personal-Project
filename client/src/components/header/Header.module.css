@@ -1,0 +1,26 @@
+
+.logo {
+    width: 8%;
+    height: auto;
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navList {
+    display: flex;
+    justify-content: space-around;
+    gap: 4em;
+    list-style: none;
+    margin-top: 5em;
+    margin-right: 2em;
+}
+
+.navLink {
+    font-size: 27px;
+    text-decoration: none;
+    color: inherit;
+}
