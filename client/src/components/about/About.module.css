@@ -1,0 +1,38 @@
+.aboutContainer {
+    background-color: antiquewhite;
+    padding: 5em;
+    
+}
+.aboutContainer p {
+    font-size: 27px;
+    line-height: 2;
+}
+.aboutContainer p:last-of-type {
+    margin-top: 2em;
+    margin-bottom: 4em;
+    
+}
+.aboutContainer h1 {
+    font-size: 50px;
+    margin-bottom: 1.5em;
+}
+.artworkContainer {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+
+}
+
+.artworkCard {
+    background: #c7a84a;
+    border: 1px solid #dc4d19;
+    border-radius: 8px;
+    padding: 5em;
+    
+}
+
+.artworkImage {
+    width: 100%;
+    height: auto;
+    
+}
