@@ -1,0 +1,89 @@
+.loginContainer {
+    background: #FFFFFF; 
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #FFEFBA);
+    background: linear-gradient(to bottom, #FFFFFF, #FFEFBA); 
+    padding-bottom: 7em;
+    padding-top: 7em;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin: auto;
+    padding: 5em;
+    background: url('/images/pink.jpeg') no-repeat center center;
+    background-size: cover;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%; 
+    max-width: 1200px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); 
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.container h1 {
+    font-size: 70px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1em;
+    font-family: "Playwrite CU", cursive;
+    border-bottom: 5px solid black;
+    
+}
+
+.container .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em
+}
+
+.container label {
+    font-size: 42px;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+ 
+  
+}
+
+.container input[type="text"], .container input[type="password"]{
+    padding: 1em;
+    font-size: 2em;
+    border-radius: 80px;
+}
+
+
+.container input[type="submit"] {
+    padding: 1em;
+    font-size: 40px;
+    background-color: white;
+    cursor: pointer;
+    width: 40%;
+    align-self: center;
+    border-radius: 100px;
+    margin-top: 1em;
+    font-family: "Playwrite CU", cursive;
+    font-weight: 500;
+    margin-bottom: 2em;
+
+    
+}
+
+.container input[type="submit"]:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.container p {
+    font-size: 40px;
+    text-align: center;
+
+}
+.container p a {
+    text-decoration: none;
+    color: purple;
+    font-weight: 500;
+}
