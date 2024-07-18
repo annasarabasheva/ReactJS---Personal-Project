@@ -1,9 +1,7 @@
 .galleryContainer {
-    background: #C4E0E5;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #C4E0E5;
+    background: -webkit-linear-gradient(to bottom, #C4E0E5, #4CA1AF);
     background: linear-gradient(to bottom, #C4E0E5, #4CA1AF); 
-
-
     padding-bottom: 10em;
     padding-top: 2em;
     

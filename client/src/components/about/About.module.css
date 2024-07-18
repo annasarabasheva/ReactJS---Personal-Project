@@ -1,7 +1,7 @@
 .aboutContainer {
-    background: #FFFFFF;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #FFFFFF, #FFEFBA); 
+    background: #FFFFFF; 
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #FFEFBA);
+    background: linear-gradient(to bottom, #FFFFFF, #FFEFBA); 
 
     padding: 5em;
     

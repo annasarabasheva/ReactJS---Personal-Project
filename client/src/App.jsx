@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import {Route, Routes} from 'react-router-dom'
 import About from './components/about/About';
 import Gallery from './components/gallery/Gallery';
+import CreateArt from './components/create-art/CreateArt';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/gallery" element={<Gallery/>}/>
+                <Route path="/create" element={<CreateArt/>}/>
         
             </Routes>
 

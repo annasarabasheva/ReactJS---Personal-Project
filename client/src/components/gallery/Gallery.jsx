@@ -5,31 +5,7 @@ export default function Gallery() {
         <div className={styles.galleryContainer}>
             <h1>Gallery</h1>
             <div className={styles.artworkContainer}>
-                <div className={styles.artworkCard}>
-                    <img src="/images/GirlDrawing.jpeg" alt="Little Yellow Dress" className={styles.artworkImage} />
-                    <h2>Little yellow dress</h2>
-                    <h3>Created By: annaThebanana</h3>
-                    <button className={styles.detailsButton}>Details</button>
-                </div>
-                <div className={styles.artworkCard}>
-                    <img src="/images/Space.jpeg" alt="Colorful Dreams" className={styles.artworkImage} />
-                    <h2>Colorful Dreams</h2>
-                    <h3>Created By: artistJane</h3>
-                    <button className={styles.detailsButton}>Details</button>
-                </div>
-                <div className={styles.artworkCard}>
-                    <img src="/images/FlowerGirl.jpeg" alt="Whimsical Forest" className={styles.artworkImage} />
-                    <h2>Whimsical Forest</h2>
-                    <h3>Created By: natureLover</h3>
-                    <button className={styles.detailsButton}>Details</button>
-                </div>
-                <div className={styles.artworkCard}>
-                    <img src="/images/HristiyanEye.jpeg" alt="Ocean Serenity" className={styles.artworkImage} />
-                    <h2>Ocean Serenity</h2>
-                    <h3>Created By: seaArtist</h3>
-                    <button className={styles.detailsButton}>Details</button>
-                </div>
-                <div className={styles.artworkCard}>
+            <div className={styles.artworkCard}>
                     <img src="https://i.pinimg.com/236x/4e/3f/b4/4e3fb469c93d8b63c2758e36068c0979.jpg" alt="Ocean Serenity" className={styles.artworkImage} />
                     <h2>Ocean Serenity</h2>
                     <h3>Created By: seaArtist</h3>
@@ -65,6 +41,31 @@ export default function Gallery() {
                     <h3>Created By: seaArtist</h3>
                     <button className={styles.detailsButton}>Details</button>
                 </div>
+                <div className={styles.artworkCard}>
+                    <img src="/images/GirlDrawing.jpeg" alt="Little Yellow Dress" className={styles.artworkImage} />
+                    <h2>Little yellow dress</h2>
+                    <h3>Created By: annaThebanana</h3>
+                    <button className={styles.detailsButton}>Details</button>
+                </div>
+                <div className={styles.artworkCard}>
+                    <img src="/images/Space.jpeg" alt="Colorful Dreams" className={styles.artworkImage} />
+                    <h2>Colorful Dreams</h2>
+                    <h3>Created By: artistJane</h3>
+                    <button className={styles.detailsButton}>Details</button>
+                </div>
+                <div className={styles.artworkCard}>
+                    <img src="/images/FlowerGirl.jpeg" alt="Whimsical Forest" className={styles.artworkImage} />
+                    <h2>Whimsical Forest</h2>
+                    <h3>Created By: natureLover</h3>
+                    <button className={styles.detailsButton}>Details</button>
+                </div>
+                <div className={styles.artworkCard}>
+                    <img src="/images/HristiyanEye.jpeg" alt="Ocean Serenity" className={styles.artworkImage} />
+                    <h2>Ocean Serenity</h2>
+                    <h3>Created By: seaArtist</h3>
+                    <button className={styles.detailsButton}>Details</button>
+                </div>
+               
             </div>
         </div>
     )
