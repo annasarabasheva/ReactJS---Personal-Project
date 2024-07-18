@@ -1,30 +1,26 @@
-.aboutContainer {
-    background-color: #8BC6EC;
-    background-image: linear-gradient(135deg, #8BC6EC 39%, #9599E2 73%);
-    padding: 5em;
+.galleryContainer {
+    background-color: antiquewhite;
+    padding-bottom: 10em;
+    padding-top: 2em;
+    
     
 }
 
-.aboutContainer p {
-    font-size: 35px;
-    line-height: 2;
-}
-.aboutContainer p:last-of-type {
-    margin-top: 2em;
-    margin-bottom: 2.5em;
-    
-}
-.aboutContainer h1 {
+.galleryContainer h1{
+    text-align: center;
+    font-family: "Playwrite CU", cursive;
     font-size: 60px;
     font-weight: 400;
-    margin-bottom: 1.5em;
-    font-family: "Playwrite CU", cursive;
+    border-bottom: 2px solid rgb(81, 78, 78);
+    margin-bottom: 3em;
+    
 }
 
 .artworkContainer {
     display: flex;
     gap: 5em;
     justify-content: center;
+    flex-wrap: wrap;  
 
 }
 
@@ -34,6 +30,9 @@
     padding: 2em;
     text-align: center;
     transition: transform 0.2s ease-in-out;
+    width: calc(25% - 5em);
+    box-sizing: border-box;
+    margin-bottom: 2em;
     
 }
 .artworkCard:hover {
