@@ -32,7 +32,7 @@ export default function CreateArt() {
 
                     <div className={styles.formGroup}>
                         <label htmlFor="description">Description:</label>
-                        <input type="text" id="description" name="description" placeholder="Write something about you art here.." />
+                        <textarea id="description" name="description" placeholder="Write something about your art here..." rows="5" />
                     </div>
 
                     <input type="submit" value="Submit" className={styles.submitButton} />
