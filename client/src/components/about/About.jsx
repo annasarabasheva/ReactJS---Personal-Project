@@ -12,25 +12,21 @@ export default function About() {
                 <div className={styles.artworkCard}>
                     <img src="/images/GirlDrawing.jpeg" alt="Little Yellow Dress" className={styles.artworkImage} />
                     <h2>Little yellow dress</h2>
-                    <h3>Created By: annaThebanana</h3>
                     <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
                     <img src="/images/Space.jpeg" alt="Colorful Dreams" className={styles.artworkImage} />
                     <h2>Colorful Dreams</h2>
-                    <h3>Created By: artistJane</h3>
                     <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
                     <img src="/images/FlowerGirl.jpeg" alt="Whimsical Forest" className={styles.artworkImage} />
                     <h2>Whimsical Forest</h2>
-                    <h3>Created By: natureLover</h3>
                     <button className={styles.detailsButton}>Details</button>
                 </div>
                 <div className={styles.artworkCard}>
                     <img src="/images/HristiyanEye.jpeg" alt="Ocean Serenity" className={styles.artworkImage} />
                     <h2>Ocean Serenity</h2>
-                    <h3>Created By: seaArtist</h3>
                     <button className={styles.detailsButton}>Details</button>
                 </div>
             </div>

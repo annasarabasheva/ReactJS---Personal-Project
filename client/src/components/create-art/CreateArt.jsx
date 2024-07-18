@@ -4,10 +4,8 @@ export default function CreateArt() {
     return (
         <div className={styles.createContainer}>
               <div className={styles.container}>
+                <h1>Share your own Art</h1>
                 <form>
-
-                    <h1>Share your own Art</h1>
-
                     <div className={styles.formGroup}>
                         <label htmlFor="title">Title:</label>
                         <input type="text" id="title" name="title" placeholder="Title of your work.." />

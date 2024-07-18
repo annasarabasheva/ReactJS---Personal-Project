@@ -6,6 +6,7 @@ import {Route, Routes} from 'react-router-dom'
 import About from './components/about/About';
 import Gallery from './components/gallery/Gallery';
 import CreateArt from './components/create-art/CreateArt';
+import Register from './components/register/Register';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/gallery" element={<Gallery/>}/>
                 <Route path="/create" element={<CreateArt/>}/>
+                <Route path="/register" element={<Register/>}/>
         
             </Routes>
 
