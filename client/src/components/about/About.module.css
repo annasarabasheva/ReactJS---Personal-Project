@@ -30,11 +30,14 @@
 
 .artworkCard {
     background: white;
-   
     border-radius: 44px;
     padding: 2em;
     text-align: center;
+    transition: transform 0.2s ease-in-out; /* Added for hover effect */
     
+}
+.artworkCard:hover {
+    transform: scale(1.05); /* Added for hover effect */
 }
 .artworkCard h2{
     margin-bottom: 1em;
