@@ -1,0 +1,37 @@
+.artworkCard {
+    background: white;
+    border-radius: 44px;
+    padding: 2em;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    width: calc(25% - 5em);
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    
+}
+.artworkCard:hover {
+    transform: scale(1.05);
+}
+
+.artworkCard h2{
+    font-family: "Playwrite CU", cursive;
+
+}
+
+.artworkImage {
+    width: 100%;
+    height: auto;
+    margin-bottom: 4em;
+    border-radius: 20px;
+    
+}
+.detailsButton {
+    margin-top: 1.2em;
+    font-size: 32px;
+    padding: 0.7em;
+    font-family: "Playwrite CU", cursive;
+    border-radius: 24px;
+    background-color: #ffc1c8
+
+}
+
