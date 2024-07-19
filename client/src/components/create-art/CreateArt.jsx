@@ -1,11 +1,30 @@
 import styles from './CreateArt.module.css';
+import * as artService from "../../services/artService"
+import {useNavigate} from "react-router-dom"
+ 
 
 export default function CreateArt() {
+
+    const navigate = useNavigate()
+
+    const createArtSubmitHandler = async (e) => {
+        e.preventDefault();
+        const artData = Object.fromEntries(new FormData(e.currentTarget));
+
+        try {
+            await artService.create(artData)
+            navigate('/gallery')
+            
+        }catch(err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div className={styles.createContainer}>
             <div className={styles.container}>
                 <h1>Share your own Art</h1>
-                <form>
+                <form onSubmit={createArtSubmitHandler}>
                     <div className={styles.formGroup}>
                         <label htmlFor="title">Title:</label>
                         <input type="text" id="title" name="title" placeholder="Title of your work.." />
