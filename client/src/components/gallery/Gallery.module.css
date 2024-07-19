@@ -26,3 +26,11 @@
 
 }
 
+
+.noArts {
+    font-family: "Playwrite CU", cursive;
+    font-size: 60px;
+    font-weight: 400;
+    padding-top: 5em;
+    padding-bottom: 5em;
+}

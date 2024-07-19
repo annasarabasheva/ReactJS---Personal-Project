@@ -18,6 +18,8 @@ export default function Gallery() {
             <div className={styles.artworkContainer}>
 
                 {arts.map(art => (<ArtItem key={art._id}{...art}/>))}
+
+                {arts.length === 0 && <h3 className={styles.noArts}>There are no publications at this moment...Stay tuned !</h3>}
                
             </div>
         </div>
