@@ -57,7 +57,17 @@
     font-size: 2em;
     border-radius: 80px;
 }
-
+.helperText {
+    font-size: 28px;
+    background-color: white;
+    border-radius: 80px;
+    padding: 0.5em;
+    text-align: center;
+    margin-top: 1em;
+}
+.helperText a {
+    text-decoration: none;
+}
 .container select option {
     font-size: 1.2em;
    

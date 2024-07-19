@@ -1,9 +1,9 @@
-import styles from './CreateArt.module.css'
+import styles from './CreateArt.module.css';
 
 export default function CreateArt() {
     return (
         <div className={styles.createContainer}>
-              <div className={styles.container}>
+            <div className={styles.container}>
                 <h1>Share your own Art</h1>
                 <form>
                     <div className={styles.formGroup}>
@@ -24,8 +24,11 @@ export default function CreateArt() {
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label htmlFor="imageUrl">Image:</label>
-                        <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload Artwork.." />
+                        <label htmlFor="imageUrl">Image URL:</label>
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter image URL.." />
+                        <div className={styles.helperText}>
+                            <p>Don't have a URL? <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">Click here to upload your image</a> and get a URL.</p>
+                        </div>
                     </div>
 
                     <div className={styles.formGroup}>
@@ -34,9 +37,8 @@ export default function CreateArt() {
                     </div>
 
                     <input type="submit" value="Submit" className={styles.submitButton} />
-                    
                 </form>
             </div>
         </div>
-    )
+    );
 }
