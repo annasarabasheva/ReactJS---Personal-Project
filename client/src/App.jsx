@@ -8,6 +8,7 @@ import Gallery from './components/gallery/Gallery';
 import CreateArt from './components/create-art/CreateArt';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
+import DetailsArt from './components/details-art/DetailsArt';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/gallery" element={<Gallery/>}/>
+                <Route path="/gallery/details/:artID" element={<DetailsArt/>}/>
                 <Route path="/create" element={<CreateArt/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>

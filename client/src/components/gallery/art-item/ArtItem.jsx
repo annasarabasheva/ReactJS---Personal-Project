@@ -1,4 +1,5 @@
-import styles from './ArtItem.module.css'
+import styles from './ArtItem.module.css';
+import {Link} from "react-router-dom";
 
 
 export default function ArtItem({_id, imageUrl, title}) {
@@ -6,7 +7,9 @@ export default function ArtItem({_id, imageUrl, title}) {
         <div className={styles.artworkCard}>
             <img src={imageUrl} alt={title} className={styles.artworkImage} />
             <h2>{title}</h2>
-            <button className={styles.detailsButton}>Details</button>
+            <Link to={`/details/${_id}`} className={styles.detailsButton}>
+            Details
+            </Link>
         </div>
     );
 }
