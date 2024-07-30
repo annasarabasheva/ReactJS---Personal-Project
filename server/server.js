@@ -1341,24 +1341,24 @@
     var seedData = {
     	arts: {
             "f843522c-cd34-4228-84ea-d32984aacba3": {
-                "title": "Girl from the Block",
+                "title": "Elementals",
                 "category": "portrait",
-                "imageUrl": "https://i.pinimg.com/236x/73/63/1f/73631f51bac9a3b48b0fcb2267b40d9b.jpg",
-                "description": "Portrait of girl with glasses, representing fun and freedome",
+                "imageUrl": "https://i.pinimg.com/564x/75/af/63/75af63cfd0e5df7591d1129387541e79.jpg",
+                "description": "Inspired by Disney's newest movie: Elementals",
                 "_id": "f843522c-cd34-4228-84ea-d32984aacba3"
             },
             "96e43461-e928-455a-b597-1e73da139462": {
-                "title": "Cocktail Time",
+                "title": "My Best Friend",
                 "category": "traditional-art",
-                "imageUrl": "https://i.pinimg.com/236x/9e/b2/0b/9eb20bc64c1864fe0255ceb99af2c00c.jpg",
-                "description": "Its Saturday afternoon and drinks are ready",
+                "imageUrl": "https://i.pinimg.com/564x/4e/fe/4a/4efe4a1546e3c168038c300905120de0.jpg",
+                "description": "That's my dog Ally and she is the inspiration behind this drawing",
                 "_id": "96e43461-e928-455a-b597-1e73da139462"
             },
             "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69": {
-                "title": "River walk",
-                "category": "landscape",
-                "imageUrl": "https://i.pinimg.com/236x/9a/df/c9/9adfc9cd10492bd12a3ee3be1a848b6e.jpg",
-                "description": "An adventure down the river",
+                "title": "In love with the nature",
+                "category": "portrait",
+                "imageUrl": "https://i.pinimg.com/564x/4d/c3/b0/4dc3b0c311ec35f99c8b8f2ec6547fdc.jpg",
+                "description": "Ispired by the nature and the beauty of the outside world",
                 "_id": "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69"
             }
         },
