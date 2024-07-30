@@ -12,6 +12,17 @@ export const getAll = async () => {
     return Object.values(result);
 };
 
+export const getOne = async (artID) => {
+    const response = await fetch(`${baseUrl}/${artID}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const result = await response.json();
+    return result;
+};
 
 export const create = async (artData) => {
     const response = await fetch(baseUrl, {
