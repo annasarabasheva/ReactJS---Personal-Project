@@ -1339,59 +1339,29 @@
     	}
     };
     var seedData = {
-    	recipes: {
-    		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Easy Lasagna",
-    			img: "assets/lasagna.jpg",
-    			ingredients: [
-    				"1 tbsp Ingredient 1",
-    				"2 cups Ingredient 2",
-    				"500 g  Ingredient 3",
-    				"25 g Ingredient 4"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551279012
-    		},
-    		"8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Grilled Duck Fillet",
-    			img: "assets/roast.jpg",
-    			ingredients: [
-    				"500 g  Ingredient 1",
-    				"3 tbsp Ingredient 2",
-    				"2 cups Ingredient 3"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551344360
-    		},
-    		"985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Roast Trout",
-    			img: "assets/fish.jpg",
-    			ingredients: [
-    				"4 cups Ingredient 1",
-    				"1 tbsp Ingredient 2",
-    				"1 tbsp Ingredient 3",
-    				"750 g  Ingredient 4",
-    				"25 g Ingredient 5"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551388703
-    		}
-    	},
+    	arts: {
+            "f843522c-cd34-4228-84ea-d32984aacba3": {
+                "title": "Girl from the Block",
+                "category": "portrait",
+                "imageUrl": "https://i.pinimg.com/236x/73/63/1f/73631f51bac9a3b48b0fcb2267b40d9b.jpg",
+                "description": "Portrait of girl with glasses, representing fun and freedome",
+                "_id": "f843522c-cd34-4228-84ea-d32984aacba3"
+            },
+            "96e43461-e928-455a-b597-1e73da139462": {
+                "title": "Cocktail Time",
+                "category": "traditional-art",
+                "imageUrl": "https://i.pinimg.com/236x/9e/b2/0b/9eb20bc64c1864fe0255ceb99af2c00c.jpg",
+                "description": "Its Saturday afternoon and drinks are ready",
+                "_id": "96e43461-e928-455a-b597-1e73da139462"
+            },
+            "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69": {
+                "title": "River walk",
+                "category": "landscape",
+                "imageUrl": "https://i.pinimg.com/236x/9a/df/c9/9adfc9cd10492bd12a3ee3be1a848b6e.jpg",
+                "description": "An adventure down the river",
+                "_id": "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69"
+            }
+        },
     	comments: {
     		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
