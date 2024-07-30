@@ -1360,6 +1360,13 @@
                 "imageUrl": "https://i.pinimg.com/564x/4d/c3/b0/4dc3b0c311ec35f99c8b8f2ec6547fdc.jpg",
                 "description": "Ispired by the nature and the beauty of the outside world",
                 "_id": "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69"
+            },
+            "db83ba0d-2eb2-4901-8e72-9f3e7c8538bf": {
+                "title": "In love with the Sunset",
+                "category": "abstract",
+                "imageUrl": "https://i.pinimg.com/564x/a8/87/a9/a887a9a642c2562d81f1029af477330d.jpg",
+                "description": "Arent't we all in love with the beauty of the sunset",
+                "_id": "db83ba0d-2eb2-4901-8e72-9f3e7c8538bf"
             }
         },
     	comments: {
