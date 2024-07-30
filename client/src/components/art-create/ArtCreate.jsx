@@ -1,9 +1,9 @@
-import styles from './CreateArt.module.css';
+import styles from './ArtCreate.module.css';
 import * as artService from "../../services/artService"
 import {useNavigate} from "react-router-dom"
  
 
-export default function CreateArt() {
+export default function ArtCreate() {
 
     const navigate = useNavigate()
 

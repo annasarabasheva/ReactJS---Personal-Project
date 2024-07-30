@@ -7,7 +7,7 @@ export default function ArtItem({_id, imageUrl, title}) {
         <div className={styles.artworkCard}>
             <img src={imageUrl} alt={title} className={styles.artworkImage} />
             <h2>{title}</h2>
-            <Link to={`/details/${_id}`} className={styles.detailsButton}>
+            <Link to={`/gallery/${_id}/details`} className={styles.detailsButton}>
             Details
             </Link>
         </div>

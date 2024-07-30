@@ -5,10 +5,10 @@ import Home from './components/home/Home';
 import {Route, Routes} from 'react-router-dom'
 import About from './components/about/About';
 import Gallery from './components/gallery/Gallery';
-import CreateArt from './components/create-art/CreateArt';
+import ArtCreate from './components/art-create/ArtCreate';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
-import DetailsArt from './components/details-art/DetailsArt';
+import ArtDetails from './components/art-details/ArtDetails';
 
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/gallery" element={<Gallery/>}/>
-                <Route path="/gallery/details/:artID" element={<DetailsArt/>}/>
-                <Route path="/create" element={<CreateArt/>}/>
+                <Route path="/gallery/:artID/details" element={<ArtDetails/>}/>
+                <Route path="/create" element={<ArtCreate/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
 
