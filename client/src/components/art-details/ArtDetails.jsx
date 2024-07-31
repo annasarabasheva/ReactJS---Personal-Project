@@ -48,9 +48,15 @@ export default function ArtDetails() {
                     <div className={styles.commentSection}>
                         <h3>Comment Section</h3>
                         <ul className={styles.comments}>
-                            {comments.map((comment, index) => (
-                                <li key={index}>{comment}</li>
-                            ))}
+                            {comments.length > 0 ? (
+                                <ul className={styles.comments}>
+                                    {comments.map((comment) => (
+                                         <li>{comment}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No comments yet...</p>
+                            )}
                         </ul>
                     </div>
 

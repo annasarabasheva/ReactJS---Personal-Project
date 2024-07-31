@@ -108,7 +108,7 @@
 }
 
 .commentSection h3 {
-    font-size: 37px;
+    font-size: 40px;
     text-align: center;
     padding-top: 0.7em;
     margin-bottom: 2em;
@@ -118,7 +118,12 @@
 .commentSection {
     margin-bottom: 4em;
 }
+.commentSection p {
+    font-size: 35px;
+    font-family: "Playwrite CU", cursive;
+    margin: 0 auto;
 
+}
 .comments {
     display: flex;
     flex-wrap: wrap; 
