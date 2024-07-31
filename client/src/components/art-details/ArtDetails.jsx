@@ -4,17 +4,34 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as artService from "../../services/artService"
+import CommentModal from './comment-modal/CommentModal';
 
 
 export default function ArtDetails() {
     const [art, setArt] = useState({});
     const { artID } = useParams();
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         artService.getOne(artID)
             .then(setArt);
 
     }, [artID]);
+
+    const handleAddCommentClick = () => {
+        setIsModalVisible(true);
+    };
+
+
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+    };
+
+
+    const handleCommentSubmit = (comment) => {
+        console.log("New comment:", comment);
+        setIsModalVisible(false);
+    };
 
     return (
         <div className={styles.detailsContainer}>
@@ -32,7 +49,7 @@ export default function ArtDetails() {
                         <h3>Comment Section</h3>
                         <ul className={styles.comments}>
                             <li>Nice</li>
-                            <li>Amazingly drawns bravooo</li>
+                            <li>Amazingly drawn bravooo</li>
                             <li>Incredible</li>
                             <li>You are an amazing artist</li>
                         </ul>
@@ -45,18 +62,20 @@ export default function ArtDetails() {
                     </div> 
                     */}
 
-                    {/* VISIBLE FOR LOGGED-IN USERS
+                    {/* VISIBLE FOR LOGGED-IN USERS  */}
                     <div className={styles.extras}>
                         <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
-                        <button className={styles.comment}>Add a Comment</button>
+                        <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
                         
                     </div> 
-                    */}
-                    
-                    
-                    
+                
                 </div>
             </div>
+            <CommentModal 
+                isVisible={isModalVisible} 
+                onClose={handleModalClose} 
+                onSubmit={handleCommentSubmit} 
+            />
         </div>
     );
 }
