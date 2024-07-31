@@ -13,16 +13,19 @@
 
 .modal {
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 4em;  
+    border-radius: 30px;
+    width: 1100px; 
+    overflow-y: auto; 
+    box-shadow: 0 0 25px rgb(140, 56, 109); 
 }
 
 .closeButton {
-    background: none;
-    border: none;
-    font-size: 20px;
+    background-color: #ffc1c8;
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    font-size: 42px; 
     float: right;
     cursor: pointer;
 }
@@ -33,21 +36,31 @@ form {
 }
 
 label {
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-bottom: 1.5em; 
+    font-family: "Playwrite CU", cursive;
+    font-size: 50px; 
+    text-align: center;
+  
 }
 
 textarea {
-    margin-bottom: 12px;
-    padding: 8px;
-    resize: vertical;
+    padding: 1em;
+    border-radius: 20px;
+  
 }
 
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
+    background-color: #ffc1c8;
+    padding: 1em;
+    font-size: 38px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin: 0 auto;
+    margin-top: 1em;
+    border-radius: 100px;
+    font-family: "Playwrite CU", cursive;
+  
+    
 }
+
