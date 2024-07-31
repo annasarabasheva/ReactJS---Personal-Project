@@ -3,33 +3,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as artService from "../../services/artService"
+import * as artService from "../../services/artService";
 import CommentModal from './comment-modal/CommentModal';
-
 
 export default function ArtDetails() {
     const [art, setArt] = useState({});
+    const [comments, setComments] = useState([]); // Add state for comments
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         artService.getOne(artID)
-            .then(setArt);
-
+            .then(artData => {
+                setArt(artData);
+                setComments(artData.comments || []); // Initialize comments from fetched art data
+            });
     }, [artID]);
 
     const handleAddCommentClick = () => {
         setIsModalVisible(true);
     };
 
-
     const handleModalClose = () => {
         setIsModalVisible(false);
     };
 
-
     const handleCommentSubmit = (comment) => {
-        console.log("New comment:", comment);
+        setComments(prevComments => [...prevComments, comment]); // Add the new comment to the list
         setIsModalVisible(false);
     };
 
@@ -48,10 +48,9 @@ export default function ArtDetails() {
                     <div className={styles.commentSection}>
                         <h3>Comment Section</h3>
                         <ul className={styles.comments}>
-                            <li>Nice</li>
-                            <li>Amazingly drawn bravooo</li>
-                            <li>Incredible</li>
-                            <li>You are an amazing artist</li>
+                            {comments.map((comment, index) => (
+                                <li key={index}>{comment}</li>
+                            ))}
                         </ul>
                     </div>
 
@@ -66,9 +65,7 @@ export default function ArtDetails() {
                     <div className={styles.extras}>
                         <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
                         <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
-                        
                     </div> 
-                
                 </div>
             </div>
             <CommentModal 
