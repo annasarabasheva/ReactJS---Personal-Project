@@ -4,19 +4,27 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
+import * as commentService from "../../services/commentService";
 import CommentModal from './comment-modal/CommentModal';
 
 export default function ArtDetails() {
     const [art, setArt] = useState({});
-    const [comments, setComments] = useState([]); // Add state for comments
+    const [comments, setComments] = useState([]);
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
+        // Fetch the art details
         artService.getOne(artID)
             .then(artData => {
                 setArt(artData);
-                setComments(artData.comments || []); // Initialize comments from fetched art data
+            });
+
+        // Fetch all comments and filter by artID
+        commentService.getAll(artID)
+            .then(filteredComments => {
+                setComments(filteredComments);
+                console.log("Fetched Comments:", filteredComments);
             });
     }, [artID]);
 
@@ -28,8 +36,16 @@ export default function ArtDetails() {
         setIsModalVisible(false);
     };
 
-    const handleCommentSubmit = (comment) => {
-        setComments(prevComments => [...prevComments, comment]); // Add the new comment to the list
+    const handleCommentSubmit = async (commentText) => {
+        const newComment = { text: commentText, artID };
+        
+        try {
+            const createdComment = await commentService.create(artID, newComment);
+            setComments(prevComments => [...prevComments, createdComment]);
+        } catch (err) {
+            console.log(err);
+        }
+
         setIsModalVisible(false);
     };
 
@@ -49,29 +65,26 @@ export default function ArtDetails() {
                         <h3>Comment Section</h3>
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
-                                <ul className={styles.comments}>
-                                    {comments.map((comment) => (
-                                         <li>{comment}</li>
-                                    ))}
-                                </ul>
+                                comments.map((comment) => (
+                                    <li key={comment._id}>{comment.text}</li>
+                                ))
                             ) : (
                                 <p>No comments yet...</p>
                             )}
                         </ul>
                     </div>
 
-                    {/* VISIBLE ONLY FOR THE CREATOR
-                    <div className={styles.buttons}>
+                    {/* VISIBLE ONLY FOR THE CREATOR */}
+                    {/* <div className={styles.buttons}>
                         <button>Edit</button>
                         <button>Delete</button>
-                    </div> 
-                    */}
-
-                    {/* VISIBLE FOR LOGGED-IN USERS  */}
+                    </div> */}
+                    
+                    {/* VISIBLE FOR LOGGED-IN USERS */}
                     <div className={styles.extras}>
                         <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
                         <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
-                    </div> 
+                    </div>
                 </div>
             </div>
             <CommentModal 

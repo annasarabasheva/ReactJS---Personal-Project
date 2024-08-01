@@ -18,6 +18,8 @@ export default function CommentModal({ isVisible, onClose, onSubmit }) {
         setComment(e.target.value);
     };
 
+
+
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
