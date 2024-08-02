@@ -19,8 +19,6 @@ function App() {
         return {};
     });
 
-
-
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
 
@@ -28,8 +26,17 @@ function App() {
         navigate('/');
     };
 
+    const registerSubmitHandler = async (values) => {
+        const result = await authService.register(values.email, values.password, values.username);
+    
+        setAuth(result);
+        console.log(result)
+        navigate('/');
+    };
+
     const values = {
         loginSubmitHandler,
+        registerSubmitHandler,
         username: auth.username || auth.email,
         email: auth.email,
         userID: auth._id,
