@@ -1,7 +1,7 @@
 const baseUrl = 'http://localhost:3030/users';
 
 const fetchWithAuth = (url, options = {}) => {
-    const token = localStorage.getItem('accessToken');
+    const token = JSON.parse(localStorage.getItem('auth'))?.accessToken;
     const headers = {
         'Content-Type': 'application/json',
         ...options.headers,
@@ -33,10 +33,10 @@ export const login = async (email, password) => {
 
     const result = await response.json();
     if (response.ok) {
-        localStorage.setItem('accessToken', result.accessToken);
+        return result;
     }
 
-    return result;
+    throw new Error('Login failed');
 };
 
 export const register = async (email, password, username) => {
@@ -50,16 +50,16 @@ export const register = async (email, password, username) => {
 
     const result = await response.json();
     if (response.ok) {
-        localStorage.setItem('accessToken', result.accessToken);
         result.username = username;
+        return result;
     }
 
-    return result;
+    throw new Error('Registration failed');
 };
 
 export const logout = async () => {
     await fetchWithAuth(`${baseUrl}/logout`, {
         method: 'GET',
     });
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('auth');
 };

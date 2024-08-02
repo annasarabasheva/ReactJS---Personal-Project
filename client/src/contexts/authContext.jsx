@@ -1,20 +1,13 @@
 import { createContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import {useState} from 'react';
-
+import usePersistedState from '../hooks/usePersistedState';
 import * as authService from '../services/authService';
 
 const AuthContext = createContext();
 
-
-export const AuthProvider = ({
-    children,
-}) => {
+export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
-        return {};
-    });
+    const [auth, setAuth] = usePersistedState('auth', {});
 
     const loginSubmitHandler = async (values) => {
         try {
@@ -38,9 +31,8 @@ export const AuthProvider = ({
 
     const logoutHandler = () => {
         setAuth({});
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('auth');
     };
-
 
     const values = {
         loginSubmitHandler,
@@ -57,9 +49,8 @@ export const AuthProvider = ({
             {children}
         </AuthContext.Provider>
     );
-
-
 };
+
 AuthContext.displayName = 'AuthContext';
 
 export default AuthContext;
