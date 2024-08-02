@@ -14,17 +14,16 @@ export default function ArtDetails() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
-        // Fetch the art details
         artService.getOne(artID)
             .then(artData => {
                 setArt(artData);
             });
 
-        // Fetch all comments and filter by artID
         commentService.getAll(artID)
             .then(filteredComments => {
                 setComments(filteredComments);
-                console.log("Fetched Comments:", filteredComments);
+               
+                
             });
     }, [artID]);
 

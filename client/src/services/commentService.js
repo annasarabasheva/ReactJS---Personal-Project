@@ -1,4 +1,4 @@
-// src/services/commentService.js
+
 const baseUrl = 'http://localhost:3030/jsonstore/comments';
 
 export const getAll = async (artID) => {
