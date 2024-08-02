@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
@@ -9,11 +9,20 @@ import ArtCreate from './components/art-create/ArtCreate';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
 import ArtDetails from './components/art-details/ArtDetails';
+import AuthContext from './contexts/authContext';
 
 
 function App() {
+
+    const [auth, setAuth] = useState({});
+    
+    const loginSubmitHandler = async (values) => {
+        console.log(values)
+    };
+
+
     return (
-        <>
+        <AuthContext.Provider value={{loginSubmitHandler}}>
             <Header />
 
             <Routes>
@@ -23,12 +32,13 @@ function App() {
                 <Route path="/gallery/:artID/details" element={<ArtDetails/>}/>
                 <Route path="/create" element={<ArtCreate/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<Login />}/>
 
             </Routes>
 
             <Footer />
-        </>
+        </AuthContext.Provider>
+      
     );
 }
 
