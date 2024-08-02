@@ -11,6 +11,7 @@ import Login from './components/login/Login';
 import ArtDetails from './components/art-details/ArtDetails';
 import AuthContext from './contexts/authContext';
 import * as authService from './services/authService';
+import Logout from './components/logout/Logout';
 
 function App() {
     const navigate = useNavigate();
@@ -39,9 +40,16 @@ function App() {
         }
     };
 
+    const logoutHandler = () => {
+        setAuth({});
+        localStorage.removeItem('accessToken');
+    };
+
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         username: auth.username,
         email: auth.email,
         userID: auth._id,
@@ -60,6 +68,7 @@ function App() {
                 <Route path="/create" element={<ArtCreate />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
             </Routes>
 
             <Footer />
