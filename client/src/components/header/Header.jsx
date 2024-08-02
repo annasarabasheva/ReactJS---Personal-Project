@@ -25,7 +25,7 @@ export default function Header() {
                     <li><Link className={styles.navLink} to="/search">Search</Link></li>
                     {isAuthenticated && (
                         <>
-                            <li><Link className={styles.navLink} to="/create">Share your Art | {username}</Link></li>
+                            <li><Link className={styles.navLink} to="/create">Share your Art </Link></li>
                             <li><Link className={styles.navLink} to="/logout">Logout</Link></li>
                         </>
                         

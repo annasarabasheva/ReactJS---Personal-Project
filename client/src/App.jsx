@@ -20,24 +20,29 @@ function App() {
     });
 
     const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
-
-        setAuth(result);
-        navigate('/');
+        try {
+            const result = await authService.login(values.email, values.password);
+            setAuth(result);
+            navigate('/');
+        } catch (error) {
+            console.error('Login failed', error);
+        }
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.email, values.password, values.username);
-    
-        setAuth(result);
-        console.log(result)
-        navigate('/');
+        try {
+            const result = await authService.register(values.email, values.password, values.username);
+            setAuth(result);
+            navigate('/');
+        } catch (error) {
+            console.error('Registration failed', error);
+        }
     };
 
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
-        username: auth.username || auth.email,
+        username: auth.username,
         email: auth.email,
         userID: auth._id,
         isAuthenticated: !!auth.accessToken,
