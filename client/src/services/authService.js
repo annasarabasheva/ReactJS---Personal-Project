@@ -1,7 +1,7 @@
 const baseUrl = 'http://localhost:3030/users';
 
 const fetchWithAuth = (url, options = {}) => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('accessToken');
     const headers = {
         'Content-Type': 'application/json',
         ...options.headers,
@@ -33,7 +33,7 @@ export const login = async (email, password) => {
 
     const result = await response.json();
     if (response.ok) {
-        localStorage.setItem('authToken', result.accessToken);
+        localStorage.setItem('accessToken', result.accessToken);
     }
 
     return result;
@@ -50,7 +50,7 @@ export const register = async (email, password) => {
 
     const result = await response.json();
     if (response.ok) {
-        localStorage.setItem('authToken', result.accessToken);
+        localStorage.setItem('accessToken', result.accessToken);
     }
 
     return result;
@@ -60,5 +60,5 @@ export const logout = async () => {
     await fetchWithAuth(`${baseUrl}/logout`, {
         method: 'GET',
     });
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('accessToken');
 };
