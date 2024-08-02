@@ -1,13 +1,15 @@
 import styles from './ArtDetails.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
 import * as commentService from "../../services/commentService";
 import CommentModal from './comment-modal/CommentModal';
+import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
+    const {userID, isAuthenticated} = useContext(AuthContext)
     const [art, setArt] = useState({});
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
@@ -73,17 +75,21 @@ export default function ArtDetails() {
                         </ul>
                     </div>
 
-                    {/* VISIBLE ONLY FOR THE CREATOR */}
-                    {/* <div className={styles.buttons}>
+                   
+                    {userID === art._ownerId && (
+                    <div className={styles.buttons}>
                         <button>Edit</button>
                         <button>Delete</button>
-                    </div> */}
+                    </div>)}
+                 
                     
-                    {/* VISIBLE FOR LOGGED-IN USERS */}
-                    <div className={styles.extras}>
-                        <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
-                        <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
-                    </div>
+                    {userID != art._ownerId && isAuthenticated && (
+                        <div className={styles.extras}>
+                         <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
+                         <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
+                     </div>
+                    )}
+                   
                 </div>
             </div>
             <CommentModal 

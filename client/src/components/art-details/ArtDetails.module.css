@@ -58,6 +58,8 @@
  }
 .buttons {
     text-align: center;
+    border-top: 2px solid black;
+    padding-top: 1em;
 }
 .buttons button {
     margin-top: 1.2em;
@@ -69,7 +71,7 @@
     border: none;
     overflow: hidden;
     margin-right: 1em;
-    width: 18%;
+    
 }
 
 .extras button {
