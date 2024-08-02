@@ -1339,36 +1339,6 @@
     	}
     };
     var seedData = {
-    	arts: {
-            "f843522c-cd34-4228-84ea-d32984aacba3": {
-                "title": "Elementals",
-                "category": "portrait",
-                "imageUrl": "https://i.pinimg.com/564x/75/af/63/75af63cfd0e5df7591d1129387541e79.jpg",
-                "description": "Inspired by Disney's newest movie: Elementals",
-                "_id": "f843522c-cd34-4228-84ea-d32984aacba3"
-            },
-            "96e43461-e928-455a-b597-1e73da139462": {
-                "title": "My Best Friend",
-                "category": "traditional-art",
-                "imageUrl": "https://i.pinimg.com/564x/4e/fe/4a/4efe4a1546e3c168038c300905120de0.jpg",
-                "description": "That's my dog Ally and she is the inspiration behind this drawing",
-                "_id": "96e43461-e928-455a-b597-1e73da139462"
-            },
-            "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69": {
-                "title": "In love with the nature",
-                "category": "portrait",
-                "imageUrl": "https://i.pinimg.com/564x/4d/c3/b0/4dc3b0c311ec35f99c8b8f2ec6547fdc.jpg",
-                "description": "Ispired by the nature and the beauty of the outside world",
-                "_id": "210f92b7-f7bb-40e3-a8a9-aec6cb43bd69"
-            },
-            "db83ba0d-2eb2-4901-8e72-9f3e7c8538bf": {
-                "title": "In love with the Sunset",
-                "category": "abstract",
-                "imageUrl": "https://i.pinimg.com/564x/a8/87/a9/a887a9a642c2562d81f1029af477330d.jpg",
-                "description": "Arent't we all in love with the beauty of the sunset",
-                "_id": "db83ba0d-2eb2-4901-8e72-9f3e7c8538bf"
-            }
-        },
     	comments: {
     		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

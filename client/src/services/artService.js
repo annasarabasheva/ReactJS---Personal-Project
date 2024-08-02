@@ -1,38 +1,23 @@
-const baseUrl = 'http://localhost:3030/jsonstore/arts';
+import * as request from "../lib/request";
+
+const baseUrl = 'http://localhost:3030/data/arts'
 
 export const getAll = async () => {
-    const response = await fetch(baseUrl, {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json'
-        }
-    });
+    const result = await request.get(baseUrl);
 
-    const result = await response.json();
-    return Object.values(result);
-};
-
-export const getOne = async (artID) => {
-    const response = await fetch(`${baseUrl}/${artID}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const result = await response.json();
     return result;
 };
 
-export const create = async (artData) => {
-    const response = await fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(artData)
-    });
+export const getOne = async (artID) => {
+    const result = await request.get(`${baseUrl}/${artID}`, );
 
-    const result = await response.json();
-    return result
+    return result;
 }
+
+
+export const create = async (artData) => {
+    const result = await request.post(baseUrl, artData);
+
+    return result;
+};
+

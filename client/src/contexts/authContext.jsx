@@ -10,37 +10,36 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = usePersistedState('auth', {});
 
     const loginSubmitHandler = async (values) => {
-        try {
-            const result = await authService.login(values.email, values.password);
-            setAuth(result);
-            navigate('/');
-        } catch (error) {
-            console.error('Login failed', error);
-        }
+        const result = await authService.login(values.email, values.password);
+
+        setAuth(result);
+        localStorage.setItem('accessToken', result.accessToken);
+
+        navigate('/');
     };
 
     const registerSubmitHandler = async (values) => {
-        try {
-            const result = await authService.register(values.email, values.password, values.username);
-            setAuth(result);
-            navigate('/');
-        } catch (error) {
-            console.error('Registration failed', error);
-        }
+        const result = await authService.register(values.email, values.password);
+
+        setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
+
+        navigate('/');
     };
 
     const logoutHandler = () => {
         setAuth({});
-        localStorage.removeItem('auth');
+        localStorage.removeItem('accessToken');
     };
 
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
-        username: auth.username,
+        username: auth.username || auth.email,
         email: auth.email,
-        userID: auth._id,
+        userId: auth._id,
         isAuthenticated: !!auth.accessToken,
     };
 

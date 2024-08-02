@@ -12,7 +12,7 @@ export default function ArtDetails() {
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
-
+    console.log(art)
     useEffect(() => {
         artService.getOne(artID)
             .then(artData => {
