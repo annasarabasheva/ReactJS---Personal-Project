@@ -16,7 +16,12 @@ export default function Home() {
 
     return (
         <main className={styles.main}>
-            <h1 className={styles.title}>WELCOME TO THE ART COMPANY {isAuthenticated && username}</h1>
+            {isAuthenticated && (
+                <h1 className={styles.title}>WELCOME TO THE ART COMPANY, {isAuthenticated && (<span className={styles.username}>{username}</span>)}</h1>
+            )}
+
+            {!isAuthenticated &&  <h1 className={styles.title}>WELCOME TO THE ART COMPANY</h1>}
+           
             <div className={styles.buttonContainer}>
                 <button className={styles.clickMe} role="button" onClick={handleClick}>
                     Click Me, Please
