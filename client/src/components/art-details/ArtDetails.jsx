@@ -2,13 +2,14 @@ import styles from './ArtDetails.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
 import * as commentService from "../../services/commentService";
 import CommentModal from './comment-modal/CommentModal';
 import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
+    const navigate = useNavigate();
     const { userID, isAuthenticated } = useContext(AuthContext);
     const [art, setArt] = useState({});
     const [comments, setComments] = useState([]);
@@ -51,7 +52,15 @@ export default function ArtDetails() {
     };
 
 
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${art.title}`);
 
+        if (hasConfirmed) {
+            await artService.remove(artID);
+
+            navigate('/gallery');
+        }
+    }
     
     const owner = art.owner || {};
 
@@ -82,8 +91,8 @@ export default function ArtDetails() {
 
                     {userID === art._ownerId && (
                         <div className={styles.buttons}>
-                            <Link to={`/gallery/${artID}/edit`}>Edit</Link>
-                            <button>Delete</button>
+                            <Link to={`/gallery/${artID}/edit`} className={styles.editButton}>Edit</Link>
+                            <button onClick={deleteButtonClickHandler}>Delete</button>
                         </div>
                     )}
 

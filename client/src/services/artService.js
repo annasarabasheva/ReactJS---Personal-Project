@@ -55,3 +55,5 @@ export const edit = async (artID, artData) => {
 
     return result;
 };
+
+export const remove = async (artID) => request.remove(`${baseUrl}/${artID}`);
