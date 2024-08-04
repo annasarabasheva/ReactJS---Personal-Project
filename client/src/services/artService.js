@@ -21,3 +21,18 @@ export const create = async (artData) => {
     return result;
 };
 
+export const getLatest = async () => {
+    const response = await fetch(`${baseUrl}?sortBy=_createdOn%20desc&pageSize=4`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch the latest arts');
+    }
+
+    const result = await response.json();
+    return result;
+};
