@@ -49,3 +49,9 @@ export const getLatest = async () => {
     const result = await response.json();
     return result;
 };
+
+export const edit = async (artID, artData) => {
+    const result = await request.put(`${baseUrl}/${artID}`, artData);
+
+    return result;
+};

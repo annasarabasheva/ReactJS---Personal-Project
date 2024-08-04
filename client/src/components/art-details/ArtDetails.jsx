@@ -2,7 +2,7 @@ import styles from './ArtDetails.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
 import * as commentService from "../../services/commentService";
 import CommentModal from './comment-modal/CommentModal';
@@ -10,20 +10,20 @@ import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
     const { userID, isAuthenticated } = useContext(AuthContext);
-    const [art, setArt] = useState(null); // Initialize as null to check loading state
+    const [art, setArt] = useState({});
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
-        // Fetch art details along with related user data
+        
         artService.getOne(artID)
             .then(artData => {
                 setArt(artData);
             })
             .catch(err => console.error('Failed to fetch art details:', err));
 
-        // Fetch comments along with related user data
+      
         commentService.getAll(artID)
             .then(filteredComments => {
                 setComments(filteredComments);
@@ -50,12 +50,10 @@ export default function ArtDetails() {
         setIsModalVisible(false);
     };
 
-    if (!art) {
-        return <div>Loading...</div>; // Show loading state while fetching
-    }
 
-    // Access the related user data
-    const owner = art.owner || {}; // Assuming `owner` contains the related user data
+
+    
+    const owner = art.owner || {};
 
     return (
         <div className={styles.detailsContainer}>
@@ -65,7 +63,7 @@ export default function ArtDetails() {
                 <div className={styles.info}>
                     <div className={styles.text}>
                         <p>Title: <span>{art.title}</span></p>
-                        <p>Created By: <span>{owner.username || 'Unknown'}</span></p> {/* Display related user data */}
+                        <p>Created By: <span>{owner.username || 'Unknown'}</span></p>
                         <p>Category: <span>{art.category}</span></p>
                         <p>Description: <span>{art.description}</span></p>
                     </div>
@@ -74,7 +72,7 @@ export default function ArtDetails() {
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
                                 comments.map(comment => (
-                                    <li key={comment._id}>{comment.owner.username}: {comment.text}</li>
+                                    <li key={comment._id}>{comment.text}</li>
                                 ))
                             ) : (
                                 <p>No comments yet...</p>
@@ -84,7 +82,7 @@ export default function ArtDetails() {
 
                     {userID === art._ownerId && (
                         <div className={styles.buttons}>
-                            <button>Edit</button>
+                            <Link to={`/gallery/${artID}/edit`}>Edit</Link>
                             <button>Delete</button>
                         </div>
                     )}
