@@ -9,10 +9,23 @@ export const getAll = async () => {
 };
 
 export const getOne = async (artID) => {
-    const result = await request.get(`${baseUrl}/${artID}`, );
+    const queries = new URLSearchParams({
+        where: `_id="${artID}"`,
+        load: `owner=_ownerId:users`
+    });
 
-    return result;
-}
+    const response = await fetch(`${baseUrl}?${queries}`);
+    
+    if (!response.ok) {
+        throw new Error(`Error fetching art details: ${response.statusText}`);
+    }
+
+ 
+    const result = await response.json();
+    
+    return result[0]; 
+};
+
 
 
 export const create = async (artData) => {

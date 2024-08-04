@@ -9,24 +9,26 @@ import CommentModal from './comment-modal/CommentModal';
 import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
-    const {userID, isAuthenticated} = useContext(AuthContext)
-    const [art, setArt] = useState({});
+    const { userID, isAuthenticated } = useContext(AuthContext);
+    const [art, setArt] = useState(null); // Initialize as null
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
-    console.log(art)
+
     useEffect(() => {
+        // Fetch art details along with related user data
         artService.getOne(artID)
             .then(artData => {
                 setArt(artData);
-            });
+            })
+            .catch(err => console.error('Failed to fetch art details:', err));
 
+        // Fetch comments
         commentService.getAll(artID)
             .then(filteredComments => {
                 setComments(filteredComments);
-               
-                
-            });
+            })
+            .catch(err => console.error('Failed to fetch comments:', err));
     }, [artID]);
 
     const handleAddCommentClick = () => {
@@ -39,7 +41,7 @@ export default function ArtDetails() {
 
     const handleCommentSubmit = async (commentText) => {
         const newComment = { text: commentText, artID };
-        
+
         try {
             const createdComment = await commentService.create(artID, newComment);
             setComments(prevComments => [...prevComments, createdComment]);
@@ -50,6 +52,13 @@ export default function ArtDetails() {
         setIsModalVisible(false);
     };
 
+    if (!art) {
+        return <div>Loading...</div>; // Show loading state while fetching
+    }
+
+    // Access the related user data
+    const owner = art.owner || {}; // Assuming `owner` contains the related user data
+
     return (
         <div className={styles.detailsContainer}>
             <h1>Details</h1>
@@ -57,16 +66,16 @@ export default function ArtDetails() {
                 <img src={art.imageUrl} alt={art.title} />
                 <div className={styles.info}>
                     <div className={styles.text}>
-                        <p>Title: <span> {art.title}</span></p>
-                        <p>Created By: <span> annabanana</span></p>
-                        <p>Category: <span> {art.category}</span></p>
-                        <p>Description: <span> {art.description}</span></p>
+                        <p>Title: <span>{art.title}</span></p>
+                        <p>Created By: <span>{owner.username || 'Unknown'}</span></p> {/* Display related user data */}
+                        <p>Category: <span>{art.category}</span></p>
+                        <p>Description: <span>{art.description}</span></p>
                     </div>
                     <div className={styles.commentSection}>
                         <h3>Comment Section</h3>
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
-                                comments.map((comment) => (
+                                comments.map(comment => (
                                     <li key={comment._id}>{comment.text}</li>
                                 ))
                             ) : (
@@ -75,27 +84,25 @@ export default function ArtDetails() {
                         </ul>
                     </div>
 
-                   
                     {userID === art._ownerId && (
-                    <div className={styles.buttons}>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>)}
-                 
-                    
-                    {userID != art._ownerId && isAuthenticated && (
-                        <div className={styles.extras}>
-                         <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle}/></button>
-                         <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
-                     </div>
+                        <div className={styles.buttons}>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
                     )}
-                   
+
+                    {userID !== art._ownerId && isAuthenticated && (
+                        <div className={styles.extras}>
+                            <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle} /></button>
+                            <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
+                        </div>
+                    )}
                 </div>
             </div>
-            <CommentModal 
-                isVisible={isModalVisible} 
-                onClose={handleModalClose} 
-                onSubmit={handleCommentSubmit} 
+            <CommentModal
+                isVisible={isModalVisible}
+                onClose={handleModalClose}
+                onSubmit={handleCommentSubmit}
             />
         </div>
     );
