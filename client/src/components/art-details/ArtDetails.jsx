@@ -10,7 +10,7 @@ import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
     const { userID, isAuthenticated } = useContext(AuthContext);
-    const [art, setArt] = useState(null); // Initialize as null
+    const [art, setArt] = useState(null); // Initialize as null to check loading state
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -23,7 +23,7 @@ export default function ArtDetails() {
             })
             .catch(err => console.error('Failed to fetch art details:', err));
 
-        // Fetch comments
+        // Fetch comments along with related user data
         commentService.getAll(artID)
             .then(filteredComments => {
                 setComments(filteredComments);
@@ -40,10 +40,8 @@ export default function ArtDetails() {
     };
 
     const handleCommentSubmit = async (commentText) => {
-        const newComment = { text: commentText, artID };
-
         try {
-            const createdComment = await commentService.create(artID, newComment);
+            const createdComment = await commentService.create(artID, commentText);
             setComments(prevComments => [...prevComments, createdComment]);
         } catch (err) {
             console.log(err);

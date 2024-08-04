@@ -1,33 +1,25 @@
-const baseUrl = 'http://localhost:3030/jsonstore/comments';
+import * as request from "../lib/request";
+
+const baseUrl = 'http://localhost:3030/data/artComments';
+
 
 export const getAll = async (artID) => {
-    const response = await fetch(baseUrl, {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json'
-        }
+    const queries = new URLSearchParams({
+        where: `artID="${artID}"`,
+        load: `owner=_ownerId:users`
     });
 
-    const result = await response.json();
-    const comments = Object.values(result);
+    const result = await request.get(`${baseUrl}?${queries}`);
     
-    if (artID) {
-        return comments.filter(comment => comment.artID === artID);
-    }
-
-    return comments;
+    return result;
 };
 
 
-export const create = async (artID, commentInfo) => {
-    const response = await fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ artID, ...commentInfo })
+export const create = async (artID, text) => {
+    const newComment = await request.post(baseUrl, {
+        artID,
+        text,
     });
 
-    const result = await response.json();
-    return result;
+    return newComment;
 };
