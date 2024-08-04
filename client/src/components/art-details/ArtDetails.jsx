@@ -74,7 +74,7 @@ export default function ArtDetails() {
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
                                 comments.map(comment => (
-                                    <li key={comment._id}>{comment.text}</li>
+                                    <li key={comment._id}>{comment.owner.username}: {comment.text}</li>
                                 ))
                             ) : (
                                 <p>No comments yet...</p>

@@ -11,27 +11,31 @@ import ArtDetails from './components/art-details/ArtDetails';
 import { AuthProvider } from './contexts/authContext';
 import Logout from './components/logout/Logout';
 import AuthGuard from './guards/AuthGuard';
+import ErrorBoundary from './components/ErrorBoundry';
 
 function App() {
     return (
-        <AuthProvider>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/gallery/:artID/details" element={<ArtDetails />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                
-                {/* Routes that require authentication */}
-                <Route element={<AuthGuard />}>
-                    <Route path="/create" element={<ArtCreate />} />
-                    <Route path="/logout" element={<Logout />} />
-                </Route>
-            </Routes>
-            <Footer />
-        </AuthProvider>
+        <ErrorBoundary>
+            <AuthProvider>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/gallery/:artID/details" element={<ArtDetails />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    
+                    {/* Routes that require authentication */}
+                    <Route element={<AuthGuard />}>
+                        <Route path="/create" element={<ArtCreate />} />
+                        <Route path="/logout" element={<Logout />} />
+                    </Route>
+                </Routes>
+                <Footer />
+            </AuthProvider>
+        </ErrorBoundary>
+        
     );
 }
 
