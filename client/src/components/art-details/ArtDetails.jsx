@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
 import * as commentService from "../../services/commentService";
 import CommentModal from './comment-modal/CommentModal';
+import ConfirmationModal from './confirmation-modal/ConfirmationModal';
 import AuthContext from '../../contexts/authContext';
 
 export default function ArtDetails() {
@@ -14,17 +15,16 @@ export default function ArtDetails() {
     const [art, setArt] = useState({});
     const [comments, setComments] = useState([]);
     const { artID } = useParams();
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isCommentModalVisible, setIsCommentModalVisible] = useState(false);
+    const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
 
     useEffect(() => {
-        
         artService.getOne(artID)
             .then(artData => {
                 setArt(artData);
             })
             .catch(err => console.error('Failed to fetch art details:', err));
 
-      
         commentService.getAll(artID)
             .then(filteredComments => {
                 setComments(filteredComments);
@@ -33,11 +33,11 @@ export default function ArtDetails() {
     }, [artID]);
 
     const handleAddCommentClick = () => {
-        setIsModalVisible(true);
+        setIsCommentModalVisible(true);
     };
 
-    const handleModalClose = () => {
-        setIsModalVisible(false);
+    const handleCommentModalClose = () => {
+        setIsCommentModalVisible(false);
     };
 
     const handleCommentSubmit = async (commentText) => {
@@ -47,21 +47,27 @@ export default function ArtDetails() {
         } catch (err) {
             console.log(err);
         }
-
-        setIsModalVisible(false);
+        setIsCommentModalVisible(false);
     };
 
+    const handleDeleteClick = () => {
+        setIsConfirmModalVisible(true);
+    };
 
-    const deleteButtonClickHandler = async () => {
-        const hasConfirmed = confirm(`Are you sure you want to delete ${art.title}`);
-
-        if (hasConfirmed) {
+    const handleConfirmDelete = async () => {
+        try {
             await artService.remove(artID);
-
             navigate('/gallery');
+        } catch (err) {
+            console.error('Failed to delete art:', err);
         }
-    }
-    
+        setIsConfirmModalVisible(false);
+    };
+
+    const handleCancelDelete = () => {
+        setIsConfirmModalVisible(false);
+    };
+
     const owner = art.owner || {};
 
     return (
@@ -72,7 +78,7 @@ export default function ArtDetails() {
                 <div className={styles.info}>
                     <div className={styles.text}>
                         <p>Title: <span>{art.title}</span></p>
-                        <p>Created By: <span>{owner.username || 'Unknown'}</span></p>
+                        <p>Created By: <span>{owner.username}</span></p>
                         <p>Category: <span>{art.category}</span></p>
                         <p>Description: <span>{art.description}</span></p>
                     </div>
@@ -92,7 +98,7 @@ export default function ArtDetails() {
                     {userID === art._ownerId && (
                         <div className={styles.buttons}>
                             <Link to={`/gallery/${artID}/edit`} className={styles.editButton}>Edit</Link>
-                            <button onClick={deleteButtonClickHandler}>Delete</button>
+                            <button onClick={handleDeleteClick}>Delete</button>
                         </div>
                     )}
 
@@ -105,9 +111,15 @@ export default function ArtDetails() {
                 </div>
             </div>
             <CommentModal
-                isVisible={isModalVisible}
-                onClose={handleModalClose}
+                isVisible={isCommentModalVisible}
+                onClose={handleCommentModalClose}
                 onSubmit={handleCommentSubmit}
+            />
+            <ConfirmationModal
+                isVisible={isConfirmModalVisible}
+                onClose={handleCancelDelete}
+                onConfirm={handleConfirmDelete}
+                title={`Are you sure you want to delete "${art.title}"?`}
             />
         </div>
     );
