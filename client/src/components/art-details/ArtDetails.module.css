@@ -31,12 +31,8 @@
     width: 50%;
     min-width: 50%;
     height: auto;
-    transition: transform 0.3s ease;
+  
     border-radius: 20px;
-}
-
-.artBox img:hover {
-    transform: scale(1.1);
 }
 
 

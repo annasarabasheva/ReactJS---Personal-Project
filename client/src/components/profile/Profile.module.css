@@ -18,13 +18,13 @@
 .myProfile {
     display: flex;
     justify-content: center;
-    gap: 2em;
+    gap: 7em;
     margin: 10em;
     align-items: flex-start;
 }
 
 .personalContainer, .likedContainer {
-    background-color: rgb(255, 232, 255);
+    background-color: rgb(244, 237, 244);
     padding: 3em;
     border-radius: 20px;
     width: 80%;
@@ -83,4 +83,9 @@
     padding-bottom: 5em;
     text-align: center;
     margin: 0 auto;
+}
+
+.personalList h3,
+.likedList h3 {
+    display: none; 
 }

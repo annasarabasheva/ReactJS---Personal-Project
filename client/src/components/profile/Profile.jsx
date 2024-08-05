@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import AuthContext from '../../contexts/authContext';
 import * as artService from '../../services/artService';
 import * as likeService from '../../services/likeService'; // Import likeService
@@ -42,7 +43,10 @@ export default function Profile() {
                         {userArt.length > 0 ? (
                             userArt.map(art => (
                                 <li key={art._id}>
-                                    <img src={art.imageUrl} alt={art.title} />
+                                    <Link to={`/gallery/${art._id}/details`}>
+                                        <img src={art.imageUrl} alt={art.title} />
+                                        <h3>{art.title}</h3>
+                                    </Link>
                                 </li>
                             ))
                         ) : (
@@ -57,7 +61,10 @@ export default function Profile() {
                         {likedPosts.length > 0 ? (
                             likedPosts.map(art => (
                                 <li key={art._id}>
-                                    <img src={art.imageUrl} alt={art.title} />
+                                    <Link to={`/gallery/${art._id}/details`}>
+                                        <img src={art.imageUrl} alt={art.title} />
+                                        <h3>{art.title}</h3>
+                                    </Link>
                                 </li>
                             ))
                         ) : (
