@@ -13,6 +13,7 @@ import Logout from './components/logout/Logout';
 import AuthGuard from './guards/AuthGuard';
 import ErrorBoundary from './components/ErrorBoundry';
 import ArtEdit from './components/art-edit/ArtEdit';
+import Profile from './components/profile/Profile';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                     {/* Routes that require authentication */}
                     <Route element={<AuthGuard />}>
                         <Route path="/create" element={<ArtCreate />} />
+                        <Route path="/profile" element={<Profile />} />
                         <Route path="/gallery/:artID/edit" element={<ArtEdit />} />
                         <Route path="/logout" element={<Logout />} />
                     </Route>
