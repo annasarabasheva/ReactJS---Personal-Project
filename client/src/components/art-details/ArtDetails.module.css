@@ -29,6 +29,7 @@
 .artBox img {
     display: block;
     width: 50%;
+    min-width: 50%;
     height: auto;
     transition: transform 0.3s ease;
     border-radius: 20px;
@@ -129,7 +130,6 @@
     padding-top: 0.7em;
     margin-bottom: 2em;
 
-
 }
 .commentSection {
     margin-bottom: 4em;
@@ -160,4 +160,11 @@
 .username {
     font-family: "Playwrite CU", cursive;
     font-weight: 500;
+    color: rgb(22, 94, 189);
+}
+
+.redIcon {
+    color: red;
+    font-size: 50px;
+    margin-left: 7px; 
 }

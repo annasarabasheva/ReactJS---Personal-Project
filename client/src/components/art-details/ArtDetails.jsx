@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as artService from "../../services/artService";
 import * as commentService from "../../services/commentService";
+import * as likeService from "../../services/likeService";
+
 import CommentModal from './comment-modal/CommentModal';
 import ConfirmationModal from './confirmation-modal/ConfirmationModal';
 import AuthContext from '../../contexts/authContext';
@@ -14,6 +16,9 @@ export default function ArtDetails() {
     const { userID, isAuthenticated } = useContext(AuthContext);
     const [art, setArt] = useState({});
     const [comments, setComments] = useState([]);
+    const [likes, setLikes] = useState([]);
+    const [hasUserLiked, setHasUserLiked] = useState(false);
+
     const { artID } = useParams();
     const [isCommentModalVisible, setIsCommentModalVisible] = useState(false);
     const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
@@ -30,7 +35,16 @@ export default function ArtDetails() {
                 setComments(filteredComments);
             })
             .catch(err => console.error('Failed to fetch comments:', err));
-    }, [artID]);
+
+        likeService.getAll(artID)
+            .then(fetchedLikes => {
+                setLikes(fetchedLikes);
+
+                const userLike = fetchedLikes.find(like => like.userID === userID);
+                setHasUserLiked(!!userLike);
+            })
+            .catch(err => console.error('Failed to fetch likes:', err));
+    }, [artID, userID]);
 
     const handleAddCommentClick = () => {
         setIsCommentModalVisible(true);
@@ -42,11 +56,9 @@ export default function ArtDetails() {
 
     const handleCommentSubmit = async (commentText) => {
         try {
-            const createdComment = await commentService.create(artID, commentText);
-          
+            await commentService.create(artID, commentText);
             const updatedComments = await commentService.getAll(artID);
             setComments(updatedComments);
-            
         } catch (err) {
             console.log(err);
         }
@@ -71,6 +83,17 @@ export default function ArtDetails() {
         setIsConfirmModalVisible(false);
     };
 
+    const handleLike = async () => {
+        try {
+            await likeService.create(artID, userID);
+            const updatedLikes = await likeService.getAll(artID);
+            setLikes(updatedLikes);
+            setHasUserLiked(true);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const owner = art.owner || {};
 
     return (
@@ -90,7 +113,9 @@ export default function ArtDetails() {
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
                                 comments.map(comment => (
-                                    <li key={comment._id}> <span className={styles.username}>{comment.owner.username}</span>: {comment.text}</li>
+                                    <li key={comment._id}>
+                                        <span className={styles.username}>{comment.owner.username}</span>: {comment.text}
+                                    </li>
                                 ))
                             ) : (
                                 <p>No comments yet...</p>
@@ -107,7 +132,9 @@ export default function ArtDetails() {
 
                     {userID !== art._ownerId && isAuthenticated && (
                         <div className={styles.extras}>
-                            <button>5 <FontAwesomeIcon icon={faHeart} className={styles.iconStyle} /></button>
+                            <button onClick={handleLike} disabled={hasUserLiked}>
+                                {likes.length} <FontAwesomeIcon icon={faHeart} className={hasUserLiked ? styles.redIcon : styles.iconStyle} />
+                            </button>
                             <button onClick={handleAddCommentClick} className={styles.comment}>Add a Comment</button>
                         </div>
                     )}
