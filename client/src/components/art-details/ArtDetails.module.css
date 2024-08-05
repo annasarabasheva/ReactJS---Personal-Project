@@ -61,6 +61,7 @@
     border-top: 2px solid black;
     padding-top: 1em;
 }
+
 .buttons button {
     margin-top: 1.2em;
     font-size: 35px;
@@ -70,6 +71,7 @@
     background-color: #ffc1c8;
     border: none;
     overflow: hidden;
+
     
     
 }
@@ -81,7 +83,7 @@
     font-size: 35px;
     background-color: #ffc1c8;
     border-radius: 24px;
-    padding: 0.3em 1em;
+    padding: 0.37em 1em;
     margin-right: 1em;
     
 }
@@ -154,4 +156,8 @@
     border: none;
     overflow: hidden;
     border: 5px dashed rgb(123, 167, 189);
+}
+.username {
+    font-family: "Playwrite CU", cursive;
+    font-weight: 500;
 }

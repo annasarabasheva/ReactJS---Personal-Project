@@ -43,7 +43,10 @@ export default function ArtDetails() {
     const handleCommentSubmit = async (commentText) => {
         try {
             const createdComment = await commentService.create(artID, commentText);
-            setComments(prevComments => [...prevComments, createdComment]);
+          
+            const updatedComments = await commentService.getAll(artID);
+            setComments(updatedComments);
+            
         } catch (err) {
             console.log(err);
         }
@@ -87,7 +90,7 @@ export default function ArtDetails() {
                         <ul className={styles.comments}>
                             {comments.length > 0 ? (
                                 comments.map(comment => (
-                                    <li key={comment._id}>{comment.text}</li>
+                                    <li key={comment._id}> <span className={styles.username}>{comment.owner.username}</span>: {comment.text}</li>
                                 ))
                             ) : (
                                 <p>No comments yet...</p>
