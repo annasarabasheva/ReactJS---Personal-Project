@@ -57,3 +57,21 @@ export const edit = async (artID, artData) => {
 };
 
 export const remove = async (artID) => request.remove(`${baseUrl}/${artID}`);
+
+
+
+// New function to get art by user ID
+export const getByUser = async (userID) => {
+    const queries = new URLSearchParams({
+        where: `_ownerId="${userID}"`
+    });
+
+    const response = await fetch(`${baseUrl}?${queries}`);
+    
+    if (!response.ok) {
+        throw new Error(`Error fetching user art: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    return result;
+};

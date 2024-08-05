@@ -18,3 +18,12 @@ export const getUserLike = async (artID, userID) => {
     const result = await request.get(`${baseUrl}?where=${query}`);
     return result;
 };
+
+
+export const getLikedPosts = async (userID) => {
+    const response = await fetch(`${baseUrl}?where=_ownerId%3D%22${userID}%22`);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch liked posts: ${response.statusText}`);
+    }
+    return await response.json();
+};
