@@ -13,10 +13,7 @@ export default function Footer() {
                     <p><FontAwesomeIcon icon={faCopyright} /><strong>2024 - All rights reserved</strong></p>
                 </div>
                 <div className={styles.icons}>
-                    <p><img src="/images/IconOne.jpg" /></p>
-                    <p><img src="/images/IconTwo.jpg"/></p>
-                    <p><img src="/images/IconThree.jpg"/></p>
-                    <p><img src="/images/IconFour.jpg"/></p>
+                    <p><img src="/images/footer.jpg" /></p>
                 </div>
             </div>
              

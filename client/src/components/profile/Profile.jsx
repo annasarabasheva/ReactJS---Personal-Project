@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom'; 
 import AuthContext from '../../contexts/authContext';
 import * as artService from '../../services/artService';
-import * as likeService from '../../services/likeService'; // Import likeService
+import * as likeService from '../../services/likeService';
 import styles from './Profile.module.css';
 
 export default function Profile() {
@@ -11,17 +11,14 @@ export default function Profile() {
     const [likedPosts, setLikedPosts] = useState([]);
 
     useEffect(() => {
-        // Fetch the user's artwork
         artService.getByUser(userID)
             .then(userArtData => {
                 setUserArt(userArtData);
             })
             .catch(err => console.error('Failed to fetch user art:', err));
         
-        // Fetch the posts liked by the user
         likeService.getLikedPosts(userID)
             .then(likedPostsData => {
-                // Fetch the full art details for each liked post
                 Promise.all(likedPostsData.map(like =>
                     artService.getOne(like.artID)
                 ))

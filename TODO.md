@@ -1,1 +1,1 @@
-Next step is to migrate comments to collections and it because rn its not really working
+Error handling
