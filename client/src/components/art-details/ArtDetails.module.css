@@ -2,8 +2,6 @@
     background-color: antiquewhite;
     padding-bottom: 10em;
     padding-top: 2em;
-    
-    
 }
 
 .detailsContainer h1{
@@ -21,17 +19,15 @@
     gap: 5em;
     background-color: white;
     padding: 4em;
-    width: 80%;
+    max-width: 85%;
     margin: 0 auto;
     border-radius: 20px;
 
 }
 .artBox img {
     display: block;
-    width: 50%;
-    min-width: 50%;
+    min-width: 45%;
     height: auto;
-  
     border-radius: 20px;
 }
 
@@ -68,8 +64,6 @@
     background-color: #ffc1c8;
     border: none;
     overflow: hidden;
-
-    
     
 }
 
@@ -110,8 +104,6 @@
     color: white;
 }
 
-
-
 .extras {
     display: flex;
     justify-content: center;
@@ -141,9 +133,7 @@
     flex-wrap: wrap; 
     gap: 2em; 
     list-style-type: none; 
-
 }
-
 
 .comments li {
     font-size: 30px;
