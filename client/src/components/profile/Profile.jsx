@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 import * as artService from '../../services/artService';
 import * as likeService from '../../services/likeService';
@@ -30,7 +30,6 @@ export default function Profile() {
                 if (Array.isArray(likedPostsData)) {
                     const arts = await Promise.all(
                         likedPostsData.map(like => {
-                        
                             if (!like.artID) {
                                 console.error('Invalid like entry:', like);
                                 return null;
@@ -38,7 +37,7 @@ export default function Profile() {
                             return artService.getOne(like.artID);
                         })
                     );
-                    
+
                     const validArts = arts.filter(art => art && art._id);
                     setLikedPosts(validArts);
                 } else {
@@ -46,7 +45,6 @@ export default function Profile() {
                     setLikedPosts([]);
                 }
             } catch (err) {
-                setError('Failed to fetch data.');
                 console.error('Error fetching data:', err);
             } finally {
                 setLoading(false);
@@ -60,14 +58,11 @@ export default function Profile() {
         return <div className={styles.loading}>Loading...</div>;
     }
 
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
-
     return (
         <div className={styles.profileContainer}>
             <h1>My Profile</h1>
             <div className={styles.myProfile}>
+                {error && <div className={styles.error}>{error}</div>}
                 <div className={styles.personalContainer}>
                     <h2>My Personal Artwork</h2>
                     <ul className={styles.personalList}>
