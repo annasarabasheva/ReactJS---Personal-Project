@@ -89,3 +89,11 @@
     color: purple;
     font-weight: 500;
 }
+
+.error {
+    color: rgb(153, 6, 6);
+    margin-top: 0.5em;
+    font-size: 14px;
+    text-decoration: underline;
+}
+

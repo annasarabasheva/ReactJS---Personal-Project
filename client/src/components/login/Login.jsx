@@ -1,4 +1,4 @@
-import styles from './Login.module.css'
+import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import useForm from "../../hooks/useForm";
 import { useContext } from 'react';
@@ -7,38 +7,53 @@ import AuthContext from '../../contexts/authContext';
 const LoginFormKeys = {
     Email: 'email',
     Password: 'password'
-}
-
+};
 
 export default function Login() {
-    const {loginSubmitHandler} = useContext(AuthContext)
+    const { loginSubmitHandler } = useContext(AuthContext);
 
-    const {values, onChange, onSubmit} = useForm(loginSubmitHandler,
-        {[LoginFormKeys.Email]: '', [LoginFormKeys.Password]: ''}
-    )
+    const { values, errors, submitError, onChange, onSubmit } = useForm(
+        loginSubmitHandler,
+        { [LoginFormKeys.Email]: '', [LoginFormKeys.Password]: '' }
+    );
 
     return (
         <div className={styles.loginContainer}>
-              <div className={styles.container}>
-                <h1>Login</h1> 
+            <div className={styles.container}>
+                <h1>Login</h1>
                 <form onSubmit={onSubmit}>
-
+                    {submitError && <p className={styles.error}>{submitError}</p>}
                     <div className={styles.formGroup}>
                         <label htmlFor="email">Email:</label>
-                        <input type="text" id="email" name={LoginFormKeys.Email} placeholder="Email.." onChange={onChange} value={values[LoginFormKeys.Email]}/>
+                        <input
+                            type="text"
+                            id="email"
+                            name={LoginFormKeys.Email}
+                            placeholder="Email.."
+                            onChange={onChange}
+                            value={values[LoginFormKeys.Email]}
+                        />
+                        {errors[LoginFormKeys.Email] && <p className={styles.error}>{errors[LoginFormKeys.Email]}</p>}
                     </div>
 
                     <div className={styles.formGroup}>
                         <label htmlFor="password">Password:</label>
-                        <input type="password" id="password" name={LoginFormKeys.Password} placeholder="Password.." onChange={onChange} value={values[LoginFormKeys.Password]}/>
+                        <input
+                            type="password"
+                            id="password"
+                            name={LoginFormKeys.Password}
+                            placeholder="Password.."
+                            onChange={onChange}
+                            value={values[LoginFormKeys.Password]}
+                        />
+                        {errors[LoginFormKeys.Password] && <p className={styles.error}>{errors[LoginFormKeys.Password]}</p>}
                     </div>
 
                     <input type="submit" value="Submit" className={styles.submitButton} />
-                    
                 </form>
 
-                <p>You dont have an account? <Link to="/register">Register here</Link></p>
+                <p>You don't have an account? <Link to="/register">Register here</Link></p>
             </div>
         </div>
-    )
+    );
 }
