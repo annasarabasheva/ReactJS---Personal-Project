@@ -75,20 +75,20 @@ To get started with this project, follow these steps:
 
 2. **Run the Server**:
     Open a terminal window, navigate to the server folder, and start the server with:
-
+    ```bash
     node server.js
- 
+    ```
 
 3. **Install Dependencies**:
     Navigate to the `client` folder and install the necessary dependencies with:
-
+    ```bash
     npm install
-
+    ```
 
 4. **Start the Client Application**:
     In the `client` folder, start the development server with:
-
+    ```bash
     npm run dev
-
+    ```
     After starting the server, a link will be displayed in the terminal. Click on this link to open the application in your web browser.
 
