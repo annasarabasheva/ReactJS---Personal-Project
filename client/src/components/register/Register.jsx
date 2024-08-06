@@ -20,11 +20,11 @@ const validate = (values) => {
 
     if (!values[RegisterFormKeys.Email]) {
         errors[RegisterFormKeys.Email] = 'Email is required';
-    }
+    } 
 
     if (!values[RegisterFormKeys.Password]) {
         errors[RegisterFormKeys.Password] = 'Password is required';
-    } 
+    }
 
     if (!values[RegisterFormKeys.ConfirmPassword]) {
         errors[RegisterFormKeys.ConfirmPassword] = 'Confirm Password is required';
@@ -43,6 +43,7 @@ export default function Register() {
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
     }, validate);
+
 
     const errorStyle = {
         color: 'rgb(153, 6, 6)',

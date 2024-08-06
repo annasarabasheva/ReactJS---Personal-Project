@@ -1,21 +1,34 @@
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
-import useForm from "../../hooks/useForm";
 import { useContext } from 'react';
 import AuthContext from '../../contexts/authContext';
+import useForm from '../../hooks/useForm';
 
 const LoginFormKeys = {
     Email: 'email',
     Password: 'password'
 };
 
+const validate = (values) => {
+    const errors = {};
+
+    if (!values[LoginFormKeys.Email]) {
+        errors[LoginFormKeys.Email] = 'Email is required';
+    }
+
+    if (!values[LoginFormKeys.Password]) {
+        errors[LoginFormKeys.Password] = 'Password is required';
+    }
+
+    return errors;
+};
+
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
-
-    const { values, errors, submitError, onChange, onSubmit } = useForm(
-        loginSubmitHandler,
-        { [LoginFormKeys.Email]: '', [LoginFormKeys.Password]: '' }
-    );
+    const { values, errors, submitError, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: '',
+    }, validate);
 
     return (
         <div className={styles.loginContainer}>
