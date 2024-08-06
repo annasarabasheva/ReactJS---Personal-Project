@@ -21,7 +21,7 @@ export default function useForm(submitHandler, initialValues, validate = () => (
             try {
                 await submitHandler(values);
             } catch (error) {
-                setSubmitError('Wrong Email or Password');
+                setSubmitError('Invalid data. Please check and try again.');
             }
         } else {
             setErrors(validationErrors);
