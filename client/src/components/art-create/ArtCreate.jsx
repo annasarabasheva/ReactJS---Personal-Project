@@ -3,6 +3,32 @@ import { useNavigate } from 'react-router-dom';
 import styles from './ArtCreate.module.css';
 import * as artService from '../../services/artService';
 
+const validate = (formData) => {
+    const errors = {};
+
+   
+    if (!formData.title.trim()) {
+        errors.title = 'Title is required';
+    }
+
+    
+    if (!formData.description.trim()) {
+        errors.description = 'Description is required';
+    }
+
+    
+    if (!formData.imageUrl.trim()) {
+        errors.imageUrl = 'Image URL is required';
+    } else {
+        const urlPattern = /^https?:\/\//;
+        if (!urlPattern.test(formData.imageUrl)) {
+            errors.imageUrl = 'Image URL must be a valid URL';
+        }
+    }
+
+    return errors;
+};
+
 export default function ArtCreate() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -11,6 +37,7 @@ export default function ArtCreate() {
         imageUrl: '',
         description: ''
     });
+    const [errors, setErrors] = useState({});
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -18,16 +45,22 @@ export default function ArtCreate() {
             ...prevState,
             [name]: value
         }));
+        setErrors(prevState => ({ ...prevState, [name]: '' })); 
     };
 
     const createArtSubmitHandler = async (e) => {
         e.preventDefault();
         
-        try {
-            await artService.create(formData);
-            navigate('/gallery');
-        } catch (err) {
-            console.log(err);
+        const validationErrors = validate(formData);
+        if (Object.keys(validationErrors).length === 0) {
+            try {
+                await artService.create(formData);
+                navigate('/gallery');
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            setErrors(validationErrors);
         }
     };
 
@@ -46,6 +79,7 @@ export default function ArtCreate() {
                             onChange={handleInputChange}
                             placeholder="Title of your work.."
                         />
+                        {errors.title && <p className={styles.error}>{errors.title}</p>}
                     </div>
 
                     <div className={styles.formGroup}>
@@ -75,6 +109,7 @@ export default function ArtCreate() {
                             onChange={handleInputChange}
                             placeholder="Enter image URL.."
                         />
+                        {errors.imageUrl && <p className={styles.error}>{errors.imageUrl}</p>}
                         <div className={styles.helperText}>
                             <p>Don't have a URL? <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">Click here to upload your image</a> and get a URL.</p>
                         </div>
@@ -90,6 +125,7 @@ export default function ArtCreate() {
                             placeholder="Write something about your art here..."
                             rows="5"
                         />
+                        {errors.description && <p className={styles.error}>{errors.description}</p>}
                     </div>
 
                     <input type="submit" value="Submit" className={styles.submitButton} />
