@@ -10,6 +10,7 @@ import ArtDetails from './components/art-details/ArtDetails';
 import Logout from './components/logout/Logout';
 import ArtEdit from './components/art-edit/ArtEdit';
 import Profile from './components/profile/Profile';
+import Search from './components/search/Search';
 
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/authContext';
@@ -18,6 +19,7 @@ import AuthGuard from './guards/AuthGuard';
 import GuestGuard from './guards/GuestGuard';
 
 import ErrorBoundary from './components/ErrorBoundry';
+
 
 function App() {
     return (
@@ -28,6 +30,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/search" element={<Search />} />
+
                     <Route path="/gallery/:artID/details" element={<ArtDetails />} />
 
                      {/* Logged in users shouldnt be able to access register or login */}

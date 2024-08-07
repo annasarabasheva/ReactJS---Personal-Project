@@ -14,14 +14,14 @@ Inspired by platforms like Pinterest and Tumblr, this project aims to create a v
 - **Home Page**: A welcoming introduction to the platform. If the user is logged in, their username will be displayed with a personalized greeting.
 - **About Page**: Provides insights into the purpose and features of the application, along with a showcase of the latest artwork.
 - **Gallery Page**: Displays a comprehensive list of available artworks, with options to view detailed information for each piece.
+- **Search Page** : This page includes a prominent search bar that allows users to select a category from a dropdown list.
 - **Details Page**: Allows users to view detailed information about specific artwork but can only see it, can't do anything with it.
-- **Register Page**: Enables new users to create an account by providing a username, email, and password.
 - **Login Page**: Allows existing users to log in with their email and password.
-
+- **Register Page**: Enables new users to create an account by providing a username, email, and password.
 
 ### Private Part
 - **Profile Page**: Users can view only their own artwork and the pieces they have liked.
-- **Create Art Page**: Enables users to create new records.
+- **Share your Art Page**: Enables users to create new records.
 - **Edit Art Page**: Provides functionality to edit existing records.
 - **Logout Page**: Allows users to log out of the application.
 
@@ -51,7 +51,7 @@ Inspired by platforms like Pinterest and Tumblr, this project aims to create a v
 - **`public/`**: Contains static assets including images and the favicon.
 
 - **`src/`**: Includes all the source code for the application.
-  - **`components/`**: Reusable UI components, such as headers, footers, and modals.
+  - **`components/`**: Reusable UI components, such as headers, footers, modals and many more.
   - **`contexts/`**: React Context API implementations for managing global state.
   - **`guards/`**: Route guards for protecting private and guest routes.
   - **`hooks/`**: Custom hooks for handling form state and other reusable logic.

@@ -21,6 +21,8 @@ export default function Header() {
                     <li><Link className={styles.navLink} to="/">Home</Link></li>
                     <li><Link className={styles.navLink} to="/about">About Us</Link></li>
                     <li><Link className={styles.navLink} to="/gallery">Gallery</Link></li>
+                    <li><Link className={styles.navLink} to="/search">Search</Link></li>
+
             
                     {isAuthenticated && (
                         <>
