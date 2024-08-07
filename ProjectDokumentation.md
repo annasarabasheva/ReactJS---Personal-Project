@@ -65,6 +65,7 @@ Inspired by platforms like Pinterest and Tumblr, this project aims to create a v
 - **CSS**: For styling components.
 - **Fetch API**: For making HTTP requests to the server.
 - **Context API**: For managing global state, such as authentication status.
+- **Server**: SoftUni's practice server
 
 ## Getting Started
 

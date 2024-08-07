@@ -11,15 +11,7 @@
     margin-top: 2em;
     margin-bottom: 3em;
 }
-.noArtMessage {
-    font-family: "Playwrite CU", cursive;
-    text-align: center;
-    font-size: 55px;
-    margin-top: 2em;
-    margin-bottom: 6em;
-    
-    
-}
+
 .searchBar label {
     font-size: 60px;
 }
@@ -44,3 +36,12 @@
     box-sizing: border-box;
 }
 
+.noArtMessage {
+    font-family: "Playwrite CU", cursive;
+    text-align: center;
+    font-size: 55px;
+    margin-top: 3em;
+    margin-bottom: 6em;
+    
+    
+}
