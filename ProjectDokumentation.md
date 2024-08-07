@@ -58,8 +58,8 @@ Inspired by platforms like Pinterest and Tumblr, this project aims to create a v
       - **`about/`**: Contains the `About` component, providing information about the application.
       - **`gallery/`**: Contains the `Gallery` component to display all artworks, and `ArtItem` component for individual artworks.
       - **`art-details/`**: Contains the `ArtDetails` component to display detailed information about specific artwork.
-            - **`comment-modal/`**: Contains the `CommentModal` component to handle user comments on artwork.
-            - **`confirmation-modal/`**: Contains the `ConfirmationModal` component to confirm user action, in this case for deleting artwork.
+        - **`comment-modal/`**: Contains the `CommentModal` component to handle user comments on artwork.
+        - **`confirmation-modal/`**: Contains the `ConfirmationModal` component to confirm user action, in this case for deleting artwork.
       - **`art-edit/`**: Contains the `ArtEdit` component for users to edit their submitted artwork.
       - **`art-create/`**: Contains the `ArtCreate` component for users to submit new artwork.
       - **`register/`**: Contains the `Register` component for user registration.
