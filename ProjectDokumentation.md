@@ -51,7 +51,26 @@ Inspired by platforms like Pinterest and Tumblr, this project aims to create a v
 - **`public/`**: Contains static assets including images and the favicon.
 
 - **`src/`**: Includes all the source code for the application.
-  - **`components/`**: Reusable UI components, such as headers, footers, modals and many more.
+  - **`components/`**: Reusable UI components, organized into folders:
+      - **`header/`**: Contains the `Header` component which includes the navigation menu.
+      - **`footer/`**: Contains the `Footer` component which includes the footer content.
+      - **`home/`**: Contains the `Home` component, the landing page of the application.
+      - **`about/`**: Contains the `About` component, providing information about the application.
+      - **`gallery/`**: Contains the `Gallery` component to display all artworks, and `ArtItem` component for individual artworks.
+      - **`art-details/`**: Contains the `ArtDetails` component to display detailed information about specific artwork.
+            - **`comment-modal/`**: Contains the `CommentModal` component to handle user comments on artwork.
+            - **`confirmation-modal/`**: Contains the `ConfirmationModal` component to confirm user action, in this case for deleting artwork.
+      - **`art-edit/`**: Contains the `ArtEdit` component for users to edit their submitted artwork.
+      - **`art-create/`**: Contains the `ArtCreate` component for users to submit new artwork.
+      - **`register/`**: Contains the `Register` component for user registration.
+      - **`login/`**: Contains the `Login` component for user authentication.
+      - **`logout/`**: Contains the `Logout` component to handle user logout.
+      - **`profile/`**: Contains the `Profile` component for user profile management.
+      - **`search/`**: Contains the `Search` component to search for artworks by category.
+      - **`page-404/`**: Contains the `Page404` component to display a 404 error message for invalid routes.
+
+      - Each folder contains a corresponding CSS module file (`[ComponentName].module.css`) for scoped styling.
+
   - **`contexts/`**: React Context API implementations for managing global state.
   - **`guards/`**: Route guards for protecting private and guest routes.
   - **`hooks/`**: Custom hooks for handling form state and other reusable logic.
