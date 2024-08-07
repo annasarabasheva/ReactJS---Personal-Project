@@ -20,7 +20,12 @@ const validate = (values) => {
 
     if (!values[RegisterFormKeys.Email]) {
         errors[RegisterFormKeys.Email] = 'Email is required';
-    } 
+    } else {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(values[RegisterFormKeys.Email])) {
+            errors[RegisterFormKeys.Email] = 'Please provide a valid email';
+        }
+    }
 
     if (!values[RegisterFormKeys.Password]) {
         errors[RegisterFormKeys.Password] = 'Password is required';

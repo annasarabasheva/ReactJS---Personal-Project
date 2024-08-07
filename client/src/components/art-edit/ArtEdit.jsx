@@ -3,6 +3,29 @@ import styles from "../art-create/ArtCreate.module.css";
 import { useParams, useNavigate } from "react-router-dom";
 import * as artService from "../../services/artService";
 
+const validate = (formData) => {
+    const errors = {};
+
+    if (!formData.title.trim()) {
+        errors.title = 'Title is required';
+    }
+
+    if (!formData.description.trim()) {
+        errors.description = 'Description is required';
+    }
+
+    if (!formData.imageUrl.trim()) {
+        errors.imageUrl = 'Image URL is required';
+    } else {
+        const urlPattern = /^https?:\/\//;
+        if (!urlPattern.test(formData.imageUrl)) {
+            errors.imageUrl = 'Image URL must be a valid URL';
+        }
+    }
+
+    return errors;
+};
+
 export default function ArtEdit() {
     const { artID } = useParams();
     const navigate = useNavigate();
@@ -12,6 +35,7 @@ export default function ArtEdit() {
         imageUrl: '',
         description: ''
     });
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         artService.getOne(artID)
@@ -27,15 +51,21 @@ export default function ArtEdit() {
             ...prevArt,
             [name]: value
         }));
+        setErrors(prevState => ({ ...prevState, [name]: '' })); 
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await artService.edit(artID, art);
-            navigate(`/gallery/${artID}/details`);
-        } catch (err) {
-            console.error('Failed to update art:', err);
+        const validationErrors = validate(art);
+        if (Object.keys(validationErrors).length === 0) {
+            try {
+                await artService.edit(artID, art);
+                navigate(`/gallery/${artID}/details`);
+            } catch (err) {
+                console.error('Failed to update art:', err);
+            }
+        } else {
+            setErrors(validationErrors);
         }
     };
 
@@ -54,6 +84,7 @@ export default function ArtEdit() {
                             onChange={handleChange}
                             placeholder="Title of your work.."
                         />
+                        {errors.title && <p className={styles.error}>{errors.title}</p>}
                     </div>
 
                     <div className={styles.formGroup}>
@@ -83,6 +114,7 @@ export default function ArtEdit() {
                             onChange={handleChange}
                             placeholder="Enter image URL.."
                         />
+                        {errors.imageUrl && <p className={styles.error}>{errors.imageUrl}</p>}
                         <div className={styles.helperText}>
                             <p>Don't have a URL? <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">Click here to upload your image</a> and get a URL.</p>
                         </div>
@@ -98,6 +130,7 @@ export default function ArtEdit() {
                             placeholder="Write something about your art here..."
                             rows="5"
                         />
+                        {errors.description && <p className={styles.error}>{errors.description}</p>}
                     </div>
 
                     <input type="submit" value="Submit" className={styles.submitButton} />
