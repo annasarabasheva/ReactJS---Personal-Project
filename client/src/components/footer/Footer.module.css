@@ -5,7 +5,7 @@
     width: 100%;
     flex-direction: column;
     gap: 0.7em;
-    margin-top: 2em;
+    margin-top: 1.5em;
     margin-left: 1.5em;
     border-right: 2px solid rgb(204, 200, 200);
     max-width: 50%;
@@ -13,22 +13,20 @@
 }
 
 .fav p:last-of-type {
-    margin-top: 2.4em
+    margin-top: 1em;
 }
 
 .icons img {
     display: block;
-    width: 100%;
+    width: 90%;
     height: auto;
-    margin-right: 4em;
+    margin-right: 2em;
 
     
 }
 .container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.4em;
-
     
-   
+    
 }
