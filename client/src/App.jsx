@@ -11,6 +11,7 @@ import Logout from './components/logout/Logout';
 import ArtEdit from './components/art-edit/ArtEdit';
 import Profile from './components/profile/Profile';
 import Search from './components/search/Search';
+import Page404 from './components/page-404/Page404';
 
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/authContext';
@@ -47,6 +48,10 @@ function App() {
                         <Route path="/gallery/:artID/edit" element={<ArtEdit />} />
                         <Route path="/logout" element={<Logout />} />
                     </Route>
+
+                    {/* 404 Route */}
+                    <Route path="*" element={<Page404 />} />
+
                 </Routes>
                 <Footer />
             </AuthProvider>
